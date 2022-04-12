@@ -25,21 +25,22 @@ void BSTNode::setRight(BSTNode* node) {
 }
 
 void BST::insert(Person p) {
+    BSTNode* newNode = new BSTNode(p);
     if (root == nullptr) {
-        root = new BSTNode(p);
+        root = newNode;
     } else {
         BSTNode* current = root;
         while (true) {
             if (current->getData() > p) {
                 if (current->getLeft() == nullptr) {
-                    current->setLeft(new BSTNode(p));
+                    current->setLeft(newNode);
                     break;
                 } else {
                     current = current->getLeft();
                 }
             } else {
                 if (current->getRight() == nullptr) {
-                    current->setRight(new BSTNode(p));
+                    current->setRight(newNode);
                     break;
                 } else {
                     current = current->getRight();
