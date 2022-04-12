@@ -2,7 +2,10 @@
 
 void LinkedList::insertNode(Person p) {
     LinkedListNode *node = new LinkedListNode(p);
-    if (head == nullptr || head->getData() > p) {
+    if (head == nullptr) {
+        head = node;
+    } else if (head->getData() > p) {
+        node->setNext(head);
         head = node;
     } else {
         LinkedListNode *current = head;
@@ -27,6 +30,25 @@ Person LinkedList::search(int index) {
         current = current->getNext();
     }
     return Person();
+}
+
+void LinkedList::removeNode(int index) {
+    LinkedListNode *current = head;
+    LinkedListNode *previous = nullptr;
+    while (current != nullptr) {
+        if (current->getData().getIndex() == index) {
+            if (previous == nullptr) {
+                head = current->getNext();
+            } else {
+                previous->setNext(current->getNext());
+            }
+            delete current;
+            return;
+        }
+        previous = current;
+        current = current->getNext();
+    }
+    throw std::out_of_range("Index not found");
 }
 
 Person LinkedListNode::getData() {

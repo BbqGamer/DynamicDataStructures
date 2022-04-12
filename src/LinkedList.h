@@ -25,6 +25,7 @@ class LinkedList {
 
     void insertNode(Person p);
     Person search(int index);
+    void removeNode(int index);
 };
 
 #endif

@@ -62,3 +62,19 @@ TEST_F(LinkedListTestF, SearchList) {
     EXPECT_EQ(list.search(2), p2);
     EXPECT_EQ(list.search(3), p3);
 }
+
+TEST_F(LinkedListTestF, RemoveFromListException) {
+    ASSERT_THROW(list.removeNode(4), std::out_of_range);
+    ASSERT_THROW(list.removeNode(-1), std::out_of_range);
+    ASSERT_THROW(list.removeNode(100), std::out_of_range);
+}
+
+TEST_F(LinkedListTestF, RemoveFromList) {
+    list.removeNode(1);
+    EXPECT_EQ(list.head->getData(), p2);
+    EXPECT_EQ(list.head->getNext()->getData(), p3);
+    EXPECT_EQ(list.head->getNext()->getNext(), nullptr);
+    list.removeNode(3);
+    EXPECT_EQ(list.head->getData(), p2);
+    EXPECT_EQ(list.head->getNext(), nullptr);
+}
