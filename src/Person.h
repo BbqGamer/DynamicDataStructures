@@ -9,14 +9,14 @@ class Person {
     std::string lastname;
 
 public:
-    Person() {};
+    Person(): index(0), firstname(""), lastname("") {};
     Person(int _index, std::string _firstname, std::string _lastname): index(_index), firstname(_firstname), lastname(_lastname) {};
 
-    int getIndex();
-    std::string getFirstname();
-    std::string getLastname();
+    int getIndex() const;
+    std::string getFirstname() const;
+    std::string getLastname() const;
 
-    int operator==(Person& other) {
+    bool operator==(const Person other) const {
         return (index == other.index && firstname == other.firstname && lastname == other.lastname);
     }
 };

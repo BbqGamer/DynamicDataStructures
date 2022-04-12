@@ -24,5 +24,6 @@ TEST(PersonTest, TestComparision) {
     EXPECT_FALSE(p1 == p3);
     EXPECT_FALSE(p1 == p4);
     EXPECT_FALSE(p1 == p5);
+    EXPECT_TRUE(Person() == Person());
 }
 
