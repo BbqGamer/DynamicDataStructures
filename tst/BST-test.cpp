@@ -35,3 +35,10 @@ TEST(BSTNodeTest, TestSetAndGetNext) {
     EXPECT_EQ(root.getRight()->getLeft(), nullptr);
     EXPECT_EQ(root.getRight()->getRight(), nullptr);
 }
+
+TEST(BSTtest, TestInsertToEmptyList) {
+    BST tree;
+    Person p = Person(1, "John", "Doe");
+    tree.insert(p);
+    EXPECT_EQ(tree.getRoot()->getData(), p);
+}

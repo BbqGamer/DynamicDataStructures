@@ -28,9 +28,9 @@ class LinkedList {
 
     LinkedListNode* getHead();
 
-    void insertNode(Person p);
+    void insert(Person p);
     Person search(int index);
-    void removeNode(int index);
+    void remove(int index);
 };
 
 #endif

@@ -31,7 +31,7 @@ TEST(LinkedListNodeTest, TestSetAndGetNext) {
 TEST(LinkedListTest, TestInsertToEmptyList) {
     LinkedList list;
     Person p = Person(1, "John", "Doe");
-    list.insertNode(p);
+    list.insert(p);
     EXPECT_EQ(list.getHead()->getData(), p);
 }
 
@@ -41,9 +41,9 @@ class LinkedListTestF : public ::testing::Test {
     p1 = Person(1, "John", "Doe");
     p2 = Person(2, "Jane", "Doe");
     p3 = Person(3, "John", "Smith");
-    list.insertNode(p3);
-    list.insertNode(p1);
-    list.insertNode(p2);
+    list.insert(p3);
+    list.insert(p1);
+    list.insert(p2);
   }
     Person p1;
     Person p2;
@@ -64,17 +64,17 @@ TEST_F(LinkedListTestF, SearchList) {
 }
 
 TEST_F(LinkedListTestF, RemoveFromListException) {
-    ASSERT_THROW(list.removeNode(4), std::out_of_range);
-    ASSERT_THROW(list.removeNode(-1), std::out_of_range);
-    ASSERT_THROW(list.removeNode(100), std::out_of_range);
+    ASSERT_THROW(list.remove(4), std::out_of_range);
+    ASSERT_THROW(list.remove(-1), std::out_of_range);
+    ASSERT_THROW(list.remove(100), std::out_of_range);
 }
 
 TEST_F(LinkedListTestF, RemoveFromList) {
-    list.removeNode(1);
+    list.remove(1);
     EXPECT_EQ(list.getHead()->getData(), p2);
     EXPECT_EQ(list.getHead()->getNext()->getData(), p3);
     EXPECT_EQ(list.getHead()->getNext()->getNext(), nullptr);
-    list.removeNode(3);
+    list.remove(3);
     EXPECT_EQ(list.getHead()->getData(), p2);
     EXPECT_EQ(list.getHead()->getNext(), nullptr);
 }

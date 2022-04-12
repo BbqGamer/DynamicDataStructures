@@ -1,6 +1,6 @@
 #include "LinkedList.h"
 
-void LinkedList::insertNode(Person p) {
+void LinkedList::insert(Person p) {
     LinkedListNode *node = new LinkedListNode(p);
     if (head == nullptr) {
         head = node;
@@ -32,7 +32,7 @@ Person LinkedList::search(int index) {
     return Person();
 }
 
-void LinkedList::removeNode(int index) {
+void LinkedList::remove(int index) {
     LinkedListNode *current = head;
     LinkedListNode *previous = nullptr;
     while (current != nullptr) {

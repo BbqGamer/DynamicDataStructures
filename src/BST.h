@@ -14,7 +14,6 @@ public:
 
     void setLeft(BSTNode* node);
     void setRight(BSTNode* node);
-
 };
 
 class BST {
@@ -24,4 +23,5 @@ class BST {
     BST(): root(nullptr) {};
 
     BSTNode* getRoot();
+    void insert(Person p);
 };
