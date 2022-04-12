@@ -21,6 +21,7 @@ public:
 class LinkedList {
     public: LinkedListNode* head;
     LinkedList(): head(nullptr) {};
+    ~LinkedList();
 
     void insertNode(Person p);
 };

@@ -29,3 +29,12 @@ LinkedListNode* LinkedListNode::getNext() {
 void LinkedListNode::setNext(LinkedListNode* node) {
     next = node;
 }
+
+LinkedList::~LinkedList() {
+    LinkedListNode *current = head;
+    while (current != nullptr) {
+        LinkedListNode *next = current->getNext();
+        delete current;
+        current = next;
+    }
+}
