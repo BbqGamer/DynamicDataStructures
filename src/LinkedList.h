@@ -22,7 +22,7 @@ class LinkedList {
     public: LinkedListNode* head;
     LinkedList(): head(nullptr) {};
 
-    //void insertNode(Person p);
+    void insertNode(Person p);
 };
 
 #endif

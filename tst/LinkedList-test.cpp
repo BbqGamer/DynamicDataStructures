@@ -28,9 +28,14 @@ TEST(LinkedListNodeTest, TestGetNext) {
     EXPECT_EQ(node1.getNext()->getData(), Person(1, "John", "Doe"));
 }
 
-// TEST(LinkedListTest, TestInsertNode) {
-//     LinkedList list;
-//     Person p = Person(1, "John", "Doe");
-//     list.insertNode(p);
-//     EXPECT_EQ(list.head->getData(), p);
-// }
+TEST(LinkedListTest, TestInsertNode) {
+    LinkedList list;
+    Person p = Person(1, "John", "Doe");
+    list.insertNode(p);
+    EXPECT_EQ(list.head->getData(), p);
+    EXPECT_EQ(list.head->getNext(), nullptr);
+    Person p1 = Person(2, "Jane", "Doe");
+    list.insertNode(p1);
+    EXPECT_EQ(list.head->getNext()->getData(), p1);
+    EXPECT_EQ(list.head->getNext()->getNext(), nullptr);
+}
