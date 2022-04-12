@@ -9,6 +9,9 @@ class Person {
     std::string lastname;
 
 public:
+    Person() {};
+    Person(int _index, std::string _firstname, std::string _lastname): index(_index), firstname(_firstname), lastname(_lastname) {};
+
     int getIndex();
     std::string getFirstname();
     std::string getLastname();
