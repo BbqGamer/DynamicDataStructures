@@ -51,6 +51,10 @@ void LinkedList::removeNode(int index) {
     throw std::out_of_range("Index not found");
 }
 
+LinkedListNode* LinkedList::getHead() {
+    return head;
+}
+
 Person LinkedListNode::getData() {
     return data;
 }

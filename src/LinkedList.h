@@ -19,9 +19,14 @@ public:
 
 
 class LinkedList {
-    public: LinkedListNode* head;
+    LinkedListNode* head;
+    
+    public:
+    
     LinkedList(): head(nullptr) {};
     ~LinkedList();
+
+    LinkedListNode* getHead();
 
     void insertNode(Person p);
     Person search(int index);

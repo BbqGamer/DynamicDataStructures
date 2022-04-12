@@ -3,7 +3,7 @@
 
 TEST(LinkedListTest, TestConstructor) {
     LinkedList list;
-    EXPECT_EQ(list.head, nullptr);
+    EXPECT_EQ(list.getHead(), nullptr);
 }
 
 TEST(LinkedListNodeTest, TestConstructorEmpty) {
@@ -32,7 +32,7 @@ TEST(LinkedListTest, TestInsertToEmptyList) {
     LinkedList list;
     Person p = Person(1, "John", "Doe");
     list.insertNode(p);
-    EXPECT_EQ(list.head->getData(), p);
+    EXPECT_EQ(list.getHead()->getData(), p);
 }
 
 class LinkedListTestF : public ::testing::Test {
@@ -52,9 +52,9 @@ class LinkedListTestF : public ::testing::Test {
 };
 
 TEST_F(LinkedListTestF, InsertToList) {
-    EXPECT_EQ(list.head->getData(), p1);
-    EXPECT_EQ(list.head->getNext()->getData(), p2);
-    EXPECT_EQ(list.head->getNext()->getNext()->getData(), p3);
+    EXPECT_EQ(list.getHead()->getData(), p1);
+    EXPECT_EQ(list.getHead()->getNext()->getData(), p2);
+    EXPECT_EQ(list.getHead()->getNext()->getNext()->getData(), p3);
 }
 
 TEST_F(LinkedListTestF, SearchList) {
@@ -71,10 +71,10 @@ TEST_F(LinkedListTestF, RemoveFromListException) {
 
 TEST_F(LinkedListTestF, RemoveFromList) {
     list.removeNode(1);
-    EXPECT_EQ(list.head->getData(), p2);
-    EXPECT_EQ(list.head->getNext()->getData(), p3);
-    EXPECT_EQ(list.head->getNext()->getNext(), nullptr);
+    EXPECT_EQ(list.getHead()->getData(), p2);
+    EXPECT_EQ(list.getHead()->getNext()->getData(), p3);
+    EXPECT_EQ(list.getHead()->getNext()->getNext(), nullptr);
     list.removeNode(3);
-    EXPECT_EQ(list.head->getData(), p2);
-    EXPECT_EQ(list.head->getNext(), nullptr);
+    EXPECT_EQ(list.getHead()->getData(), p2);
+    EXPECT_EQ(list.getHead()->getNext(), nullptr);
 }
