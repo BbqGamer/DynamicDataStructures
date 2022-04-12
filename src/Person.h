@@ -15,6 +15,10 @@ public:
     int getIndex();
     std::string getFirstname();
     std::string getLastname();
+
+    int operator==(Person& other) {
+        return (index == other.index && firstname == other.firstname && lastname == other.lastname);
+    }
 };
 
 #endif
