@@ -19,6 +19,10 @@ public:
     bool operator==(const Person other) const {
         return (index == other.index && firstname == other.firstname && lastname == other.lastname);
     }
+
+    bool operator>(const Person other) const {
+        return index > other.index;
+    }
 };
 
 std::ostream& operator<<(std::ostream& os, const Person& p);

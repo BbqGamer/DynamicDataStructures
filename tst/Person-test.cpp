@@ -13,7 +13,7 @@ TEST(PersonTest, TestConstructors) {
     EXPECT_EQ(p1.getLastname(), "Doe");
 }
 
-TEST(PersonTest, TestComparision) {
+TEST(PersonTest, TestEquality) {
     Person p1(1, "John", "Doe");
     Person p2(1, "John", "Doe");
     Person p3(2, "John", "Doe");
@@ -25,5 +25,16 @@ TEST(PersonTest, TestComparision) {
     EXPECT_FALSE(p1 == p4);
     EXPECT_FALSE(p1 == p5);
     EXPECT_TRUE(Person() == Person());
+}
+
+TEST(PersonTest, LargerThan) {
+    Person p1(1, "John", "Doe");
+    Person p2(2, "John", "Doe");
+    Person p3(3, "John", "Doe");
+
+    EXPECT_FALSE(p1 > p2);
+    EXPECT_TRUE(p2 > p1);
+    EXPECT_TRUE(p3 > p2);
+    EXPECT_FALSE(Person() > Person());
 }
 

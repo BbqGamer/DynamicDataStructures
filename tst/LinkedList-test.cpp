@@ -19,7 +19,7 @@ TEST(LinkedListNodeTest, TestConstructor) {
     EXPECT_EQ(node1.getData(), p);
 }
 
-TEST(LinkedListNodeTest, TestGetNext) {
+TEST(LinkedListNodeTest, TestSetAndGetNext) {
     LinkedListNode node1 = LinkedListNode();
     LinkedListNode node2 = LinkedListNode(Person(1, "John", "Doe"));
     node1.setNext(&node2);
@@ -28,14 +28,32 @@ TEST(LinkedListNodeTest, TestGetNext) {
     EXPECT_EQ(node1.getNext()->getData(), Person(1, "John", "Doe"));
 }
 
-TEST(LinkedListTest, TestInsertNode) {
+TEST(LinkedListTest, TestInsertToEmptyList) {
     LinkedList list;
     Person p = Person(1, "John", "Doe");
     list.insertNode(p);
     EXPECT_EQ(list.head->getData(), p);
-    EXPECT_EQ(list.head->getNext(), nullptr);
-    Person p1 = Person(2, "Jane", "Doe");
-    list.insertNode(p1);
-    EXPECT_EQ(list.head->getNext()->getData(), p1);
-    EXPECT_EQ(list.head->getNext()->getNext(), nullptr);
 }
+
+class LinkedListTestF : public ::testing::Test {
+ protected:
+  void SetUp() override {
+    p1 = Person(1, "John", "Doe");
+    p2 = Person(2, "Jane", "Doe");
+    p3 = Person(3, "John", "Smith");
+    list.insertNode(p3);
+    list.insertNode(p1);
+    list.insertNode(p2);
+  }
+    Person p1;
+    Person p2;
+    Person p3;
+    LinkedList list;
+};
+
+TEST_F(LinkedListTestF, InsertToList) {
+    EXPECT_EQ(list.head->getData(), p1);
+    EXPECT_EQ(list.head->getNext()->getData(), p2);
+    EXPECT_EQ(list.head->getNext()->getNext()->getData(), p3);
+}
+
