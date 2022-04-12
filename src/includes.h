@@ -2,5 +2,6 @@
 #define INCLUDES_H
 
 #include<string>
+#include<iostream>
 
 #endif

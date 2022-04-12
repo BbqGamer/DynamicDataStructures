@@ -21,4 +21,6 @@ public:
     }
 };
 
+std::ostream& operator<<(std::ostream& os, const Person& p);
+
 #endif
