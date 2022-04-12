@@ -12,6 +12,9 @@ public:
     BSTNode* getLeft();
     Person getData();
 
+    void setLeft(BSTNode* node);
+    void setRight(BSTNode* node);
+
 };
 
 class BST {

@@ -15,3 +15,11 @@ BSTNode* BSTNode::getLeft() {
 Person BSTNode::getData() {
     return data;
 }
+
+void BSTNode::setLeft(BSTNode* node) {
+    left = node;
+}
+
+void BSTNode::setRight(BSTNode* node) {
+    right = node;
+}
