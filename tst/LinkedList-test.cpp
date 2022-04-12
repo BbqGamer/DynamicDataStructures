@@ -57,3 +57,8 @@ TEST_F(LinkedListTestF, InsertToList) {
     EXPECT_EQ(list.head->getNext()->getNext()->getData(), p3);
 }
 
+TEST_F(LinkedListTestF, SearchList) {
+    EXPECT_EQ(list.search(1), p1);
+    EXPECT_EQ(list.search(2), p2);
+    EXPECT_EQ(list.search(3), p3);
+}

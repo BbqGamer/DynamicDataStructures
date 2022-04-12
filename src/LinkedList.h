@@ -24,6 +24,7 @@ class LinkedList {
     ~LinkedList();
 
     void insertNode(Person p);
+    Person search(int index);
 };
 
 #endif

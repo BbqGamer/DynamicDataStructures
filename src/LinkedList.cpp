@@ -18,6 +18,17 @@ void LinkedList::insertNode(Person p) {
     }
 }
 
+Person LinkedList::search(int index) {
+    LinkedListNode *current = head;
+    while (current != nullptr) {
+        if (current->getData().getIndex() == index) {
+            return current->getData();
+        }
+        current = current->getNext();
+    }
+    return Person();
+}
+
 Person LinkedListNode::getData() {
     return data;
 }
