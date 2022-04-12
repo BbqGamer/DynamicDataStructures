@@ -6,6 +6,8 @@ class BSTNode {
     Person data;
 public:
     BSTNode(): left(nullptr), right(nullptr), data(Person()) {};
+    BSTNode(Person p): left(nullptr), right(nullptr), data(p) {};
+    
     BSTNode* getRight();
     BSTNode* getLeft();
     Person getData();
