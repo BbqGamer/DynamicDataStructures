@@ -49,3 +49,31 @@ void BST::insert(Person p) {
         }
     }
 }
+
+Person BST::search(int index) {
+    BSTNode* current = root;
+    while (current != nullptr) {
+        if (current->getData().getIndex() == index) {
+            return current->getData();
+        }
+        if (current->getData().getIndex() > index) {
+            current = current->getLeft();
+        } else {
+            current = current->getRight();
+        }
+    }
+    throw std::out_of_range("Index not found in BST");
+}
+
+void deleteSubtree(BSTNode* node) {
+    if (node == nullptr) {
+        return;
+    }
+    deleteSubtree(node->getLeft());
+    deleteSubtree(node->getRight());
+    delete node;
+}
+
+BST::~BST() {
+    deleteSubtree(root);
+}

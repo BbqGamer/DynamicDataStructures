@@ -21,7 +21,11 @@ class BST {
 
     public:
     BST(): root(nullptr) {};
+    ~BST();
 
     BSTNode* getRoot();
     void insert(Person p);
+    Person search(int index);
 };
+
+void deleteSubtree(BSTNode* node);

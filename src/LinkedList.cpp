@@ -29,7 +29,7 @@ Person LinkedList::search(int index) {
         }
         current = current->getNext();
     }
-    return Person();
+    throw std::out_of_range("Index not found in Linked List");
 }
 
 void LinkedList::remove(int index) {
@@ -48,7 +48,7 @@ void LinkedList::remove(int index) {
         previous = current;
         current = current->getNext();
     }
-    throw std::out_of_range("Index not found");
+    throw std::out_of_range("Index not found in Linked List");
 }
 
 LinkedListNode* LinkedList::getHead() {

@@ -68,3 +68,32 @@ TEST_F(BSTtestF, InsertToTree) {
     EXPECT_EQ(tree.getRoot()->getLeft()->getLeft()->getData(), p1);
     EXPECT_EQ(tree.getRoot()->getRight()->getData(), p4);
 }
+
+TEST_F(BSTtestF, SearchTree) {
+    EXPECT_EQ(tree.search(1), p1);
+    EXPECT_EQ(tree.search(2), p2);
+    EXPECT_EQ(tree.search(3), p3);
+    EXPECT_EQ(tree.search(4), p4);
+}
+
+TEST_F(BSTtestF, SearchTreeException) {
+    ASSERT_THROW(tree.search(5), std::out_of_range);
+    ASSERT_THROW(tree.search(-1), std::out_of_range);
+    ASSERT_THROW(tree.search(10000000), std::out_of_range);
+}
+
+TEST_F(BSTtestF, RemoveFromTreeException) {
+    ASSERT_THROW(list.remove(4), std::out_of_range);
+    ASSERT_THROW(list.remove(-1), std::out_of_range);
+    ASSERT_THROW(list.remove(100), std::out_of_range);
+}
+
+TEST_F(BSTtestF, RemoveFromTree) {
+    list.remove(1);
+    EXPECT_EQ(list.getHead()->getData(), p2);
+    EXPECT_EQ(list.getHead()->getNext()->getData(), p3);
+    EXPECT_EQ(list.getHead()->getNext()->getNext(), nullptr);
+    list.remove(3);
+    EXPECT_EQ(list.getHead()->getData(), p2);
+    EXPECT_EQ(list.getHead()->getNext(), nullptr);
+}

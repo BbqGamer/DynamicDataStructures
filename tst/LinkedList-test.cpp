@@ -63,6 +63,13 @@ TEST_F(LinkedListTestF, SearchList) {
     EXPECT_EQ(list.search(3), p3);
 }
 
+
+TEST_F(LinkedListTestF, SearchListException) {
+    ASSERT_THROW(list.search(4), std::out_of_range);
+    ASSERT_THROW(list.search(-1000), std::out_of_range);
+    ASSERT_THROW(list.search(142435234), std::out_of_range);
+}
+
 TEST_F(LinkedListTestF, RemoveFromListException) {
     ASSERT_THROW(list.remove(4), std::out_of_range);
     ASSERT_THROW(list.remove(-1), std::out_of_range);
