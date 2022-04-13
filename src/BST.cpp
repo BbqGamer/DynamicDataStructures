@@ -28,6 +28,14 @@ void BSTNode::setRight(BSTNode* node) {
     right = node;
 }
 
+int BSTNode::getHeight() {
+    return height;
+}
+
+void BSTNode::setHeight(int _height) {
+    height = _height;
+}
+
 BSTNode* BSTNode::findMin() {
     BSTNode* current = this;
     while(current->getLeft() != nullptr) {

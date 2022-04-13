@@ -4,14 +4,21 @@ class BSTNode {
     BSTNode *left;
     BSTNode *right;
     Person data;
+    int height;
 public:
-    BSTNode(): left(nullptr), right(nullptr), data(Person()) {};
-    BSTNode(Person p): left(nullptr), right(nullptr), data(p) {};
-    
+
+    BSTNode(): left(nullptr), right(nullptr), data(Person()), height(1) {};
+    BSTNode(Person p): left(nullptr), right(nullptr), data(p), height(1) {};
+    BSTNode(BSTNode* node): left(node->left), right(node->right), data(node->data), height(1) {};
+
     BSTNode* getRight();
     BSTNode* getLeft();
     Person getData();
     void setData(Person p);
+
+    int getHeight();
+    void setHeight(int _height);
+
     BSTNode* findMin();
     void remove(int index);
 

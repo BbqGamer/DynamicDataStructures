@@ -7,17 +7,10 @@ class AVL: public BST {
     public:
         AVL() {};
         ~AVL() {};
-        void insert(Person p);
+        //void insert(Person p);
 };
 
-class AVLNode: public BSTNode {
-    int height;
-
-    public:
-        AVLNode(): BSTNode(), height(0) {};
-        AVLNode(Person p): BSTNode(p), height(0) {};
-
-        int getHeight();
-};
+BSTNode* leftRotate(BSTNode* node);
+BSTNode* rightRotate(BSTNode* node);
 
 #endif

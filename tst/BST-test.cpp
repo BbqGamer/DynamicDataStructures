@@ -70,9 +70,9 @@ class BSTtestF : public ::testing::Test {
     RESULTING TREE LOOKS LIKE THIS:
             3
            / \
-          2   4
+          2   5
          /   / \
-        1    5  6
+        1    4  6
     */
 
 };
