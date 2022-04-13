@@ -1,11 +1,11 @@
 #include "Person.h"
 
 class BSTNode {
+public:
     BSTNode *left;
     BSTNode *right;
     Person data;
     int height;
-public:
 
     BSTNode(): left(nullptr), right(nullptr), data(Person()), height(1) {};
     BSTNode(Person p): left(nullptr), right(nullptr), data(p), height(1) {};

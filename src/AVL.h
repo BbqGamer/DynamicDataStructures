@@ -7,7 +7,7 @@ class AVL: public BST {
     public:
         AVL() {};
         ~AVL() {};
-        //void insert(Person p);
+        void insert(Person p);
 
         void setRoot(BSTNode* node);
 };
@@ -15,5 +15,8 @@ class AVL: public BST {
 BSTNode* leftRotate(BSTNode* node);
 BSTNode* rightRotate(BSTNode* node);
 int getBalanceFactor(BSTNode* node);
+
+BSTNode* insertToSubtree(BSTNode* node, Person p);
+int height(BSTNode* node);
 
 #endif

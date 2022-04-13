@@ -26,7 +26,7 @@ class AVLtestF : public ::testing::Test {
     tree.insert(p5);tree.getRoot()->getLeft()->getRight()->getRight()->setHeight(1);
   }
     Person p1, p2 ,p3, p4, p5, p6, p7;
-    AVL tree;
+    BST tree;
     /*
     RESULTING TREE LOOKS LIKE THIS:
             6
@@ -67,4 +67,27 @@ TEST_F(AVLtestF, TestGetBalanceFactor) {
     EXPECT_EQ(getBalanceFactor(tree.getRoot()), 2);
     EXPECT_EQ(getBalanceFactor(tree.getRoot()->getLeft()), -1);
     EXPECT_EQ(getBalanceFactor(tree.getRoot()->getLeft()->getRight()), 0);
+}
+
+TEST_F(AVLtestF, TestInsertToEmpty) {
+    AVL tree;
+    p6 = Person(6, "Jane", "Doe");
+    tree.insert(p6);
+    EXPECT_EQ(tree.getRoot()->getData(), p6);
+}
+
+TEST(AVLtest, TestInserts) {
+    AVL tree;
+    Person p30, p5, p35, p32, p40, p45;
+    p30 = Person(30, "A", "B");
+    tree.insert(p30);
+    p5 = Person(5, "C", "D");
+    tree.insert(p5); //ERROR
+    p35 = Person(35, "E", "F");tree.insert(p35);
+    p32 = Person(32, "G", "H");tree.insert(p32);
+    p40 = Person(40, "I", "J");tree.insert(p40);
+    p45 = Person(45, "K", "L");tree.insert(p45);
+    EXPECT_EQ(tree.getRoot()->getData(), p35);
+    EXPECT_EQ(tree.getRoot()->getRight()->getData(), p40);
+    EXPECT_EQ(tree.getRoot()->getRight()->getRight()->getData(), p45);
 }
