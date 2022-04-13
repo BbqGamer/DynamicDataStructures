@@ -66,6 +66,15 @@ class BSTtestF : public ::testing::Test {
     Person p4;
     Person p6;
     BST tree;
+    /*
+    RESULTING TREE LOOKS LIKE THIS:
+            3
+           / \
+          2   4
+         /   / \
+        1    5  6
+    */
+
 };
 
 TEST_F(BSTtestF, InsertToTree) {
