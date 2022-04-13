@@ -8,6 +8,8 @@ class AVL: public BST {
         AVL() {};
         ~AVL() {};
         //void insert(Person p);
+
+        void setRoot(BSTNode* node);
 };
 
 BSTNode* leftRotate(BSTNode* node);

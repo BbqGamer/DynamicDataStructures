@@ -36,6 +36,10 @@ void BSTNode::setHeight(int _height) {
     height = _height;
 }
 
+void BST::setRoot(BSTNode* node) {
+    root = node;
+}
+
 BSTNode* BSTNode::findMin() {
     BSTNode* current = this;
     while(current->getLeft() != nullptr) {

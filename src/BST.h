@@ -34,6 +34,7 @@ class BST {
     BST(): root(nullptr) {};
     ~BST();
 
+    void setRoot(BSTNode* node);
     BSTNode* getRoot();
 
     void insert(Person p);
