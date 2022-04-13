@@ -11,9 +11,13 @@ public:
     BSTNode* getRight();
     BSTNode* getLeft();
     Person getData();
+    void setData(Person p);
+    BSTNode* findMin();
+    void remove(int index);
 
     void setLeft(BSTNode* node);
     void setRight(BSTNode* node);
+    
 };
 
 class BST {
@@ -24,8 +28,12 @@ class BST {
     ~BST();
 
     BSTNode* getRoot();
+
     void insert(Person p);
     Person search(int index);
+    void remove(int index);
+
 };
 
 void deleteSubtree(BSTNode* node);
+BSTNode* removeFromSubtree(BSTNode* root, int index);

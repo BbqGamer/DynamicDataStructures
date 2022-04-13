@@ -16,12 +16,24 @@ Person BSTNode::getData() {
     return data;
 }
 
+void BSTNode::setData(Person p) {
+    data = p;
+}
+
 void BSTNode::setLeft(BSTNode* node) {
     left = node;
 }
 
 void BSTNode::setRight(BSTNode* node) {
     right = node;
+}
+
+BSTNode* BSTNode::findMin() {
+    BSTNode* current = this;
+    while(current->getLeft() != nullptr) {
+        current = current->getLeft();
+    }
+    return current;
 }
 
 void BST::insert(Person p) {
@@ -63,6 +75,39 @@ Person BST::search(int index) {
         }
     }
     throw std::out_of_range("Index not found in BST");
+}
+
+void BST::remove(int index) {
+    root = removeFromSubtree(root, index);
+}
+
+BSTNode* removeFromSubtree(BSTNode* root, int index) {
+    if (root == nullptr) {
+        throw std::out_of_range("Index not found in BST");
+    }
+    if (root->getData().getIndex() > index) {
+        root->setLeft(removeFromSubtree(root->getLeft(), index));
+    } else if (root->getData().getIndex() < index) {
+        root->setRight(removeFromSubtree(root->getRight(), index));
+    } else {
+        if (root->getLeft() == nullptr && root->getRight() == nullptr) {
+            delete root;
+            return nullptr;
+        } else if (root->getLeft() == nullptr) {
+            BSTNode* temp = root->getRight();
+            delete root;
+            return temp;
+        } else if (root->getRight() == nullptr) {
+            BSTNode* temp = root->getLeft();
+            delete root;
+            return temp;
+        } else {
+            BSTNode* temp = root->getRight()->findMin();
+            root->setData(temp->getData());
+            root->setRight(removeFromSubtree(root->getRight(), temp->getData().getIndex()));
+        }
+    }
+    return root;
 }
 
 void deleteSubtree(BSTNode* node) {
