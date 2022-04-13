@@ -136,3 +136,10 @@ TEST_F(BSTtestF, RemoveWithTwoChildren) {
     EXPECT_EQ(tree.getRoot()->getLeft()->getData(), p2);
 }
 
+TEST_F(BSTtestF, RemoveEntireTree) {
+    while(tree.getRoot() != nullptr) {
+        tree.remove(tree.getRoot()->getData().getIndex());
+    }
+    ASSERT_EQ(tree.getRoot(), nullptr);
+}
+
