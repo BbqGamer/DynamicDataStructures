@@ -17,13 +17,13 @@ class AVLtestF : public ::testing::Test {
     p6 = Person(6, "Jane", "Doe");
     p7 = Person(7, "Jimmy", "Jackson");
     
-    tree.insert(p6);tree.getRoot()->setHeight(1);
-    tree.insert(p2);tree.getRoot()->getLeft()->setHeight(2);
-    tree.insert(p7);tree.getRoot()->getRight()->setHeight(2);
-    tree.insert(p1);tree.getRoot()->getLeft()->getLeft()->setHeight(3);
-    tree.insert(p4);tree.getRoot()->getLeft()->getRight()->setHeight(3);
-    tree.insert(p3);tree.getRoot()->getLeft()->getRight()->getLeft()->setHeight(4);
-    tree.insert(p5);tree.getRoot()->getLeft()->getRight()->getRight()->setHeight(4);
+    tree.insert(p6);tree.getRoot()->setHeight(4);
+    tree.insert(p2);tree.getRoot()->getLeft()->setHeight(3);
+    tree.insert(p7);tree.getRoot()->getRight()->setHeight(1);
+    tree.insert(p1);tree.getRoot()->getLeft()->getLeft()->setHeight(1);
+    tree.insert(p4);tree.getRoot()->getLeft()->getRight()->setHeight(2);
+    tree.insert(p3);tree.getRoot()->getLeft()->getRight()->getLeft()->setHeight(1);
+    tree.insert(p5);tree.getRoot()->getLeft()->getRight()->getRight()->setHeight(1);
   }
     Person p1, p2 ,p3, p4, p5, p6, p7;
     AVL tree;
@@ -61,4 +61,10 @@ TEST_F(AVLtestF, TestRightRotate) {
     EXPECT_EQ(tree.getRoot()->getLeft()->getRight()->getData(), p3);
     EXPECT_EQ(tree.getRoot()->getRight()->getLeft()->getData(), p5);
     EXPECT_EQ(tree.getRoot()->getRight()->getRight()->getData(), p7);
+}
+
+TEST_F(AVLtestF, TestGetBalanceFactor) {
+    EXPECT_EQ(getBalanceFactor(tree.getRoot()), 2);
+    EXPECT_EQ(getBalanceFactor(tree.getRoot()->getLeft()), -1);
+    EXPECT_EQ(getBalanceFactor(tree.getRoot()->getLeft()->getRight()), 0);
 }

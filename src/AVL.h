@@ -14,5 +14,6 @@ class AVL: public BST {
 
 BSTNode* leftRotate(BSTNode* node);
 BSTNode* rightRotate(BSTNode* node);
+int getBalanceFactor(BSTNode* node);
 
 #endif

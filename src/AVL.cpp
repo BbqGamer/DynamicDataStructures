@@ -37,3 +37,10 @@ BSTNode *rightRotate(BSTNode *y)
 void AVL::setRoot(BSTNode* node) {
     BST::setRoot(node);
 }
+
+int getBalanceFactor(BSTNode *node)
+{
+    if (node == nullptr)
+        return 0;
+    return node->getLeft()->getHeight() - node->getRight()->getHeight();
+}
