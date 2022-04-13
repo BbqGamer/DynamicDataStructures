@@ -134,3 +134,30 @@ void deleteSubtree(BSTNode* node) {
 BST::~BST() {
     deleteSubtree(root);
 }
+
+void printINORDER(BSTNode* root) {
+    if (root == nullptr) {
+        return;
+    }
+    printINORDER(root->left);
+    std::cout << "  " << root->getData() << " " << root->getHeight() << std::endl;
+    printINORDER(root->right);
+}
+
+void printPREORDER(BSTNode* root) {
+    if (root == nullptr) {
+        return;
+    }
+    std::cout << "  " << root->getData() << " " << root->getHeight() << std::endl;
+    printPREORDER(root->left);
+    printPREORDER(root->right);
+}
+
+void printPOSTORDER(BSTNode* root) {
+    if (root == nullptr) {
+        return;
+    }
+    printPOSTORDER(root->left);
+    printPOSTORDER(root->right);
+    std::cout << "  " << root->getData() << " " << root->getHeight() << std::endl;
+}

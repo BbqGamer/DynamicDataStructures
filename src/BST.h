@@ -45,3 +45,7 @@ class BST {
 
 void deleteSubtree(BSTNode* node);
 BSTNode* removeFromSubtree(BSTNode* root, int index);
+
+void printINORDER(BSTNode* root);
+void printPREORDER(BSTNode* root);
+void printPOSTORDER(BSTNode* root);

@@ -8,11 +8,11 @@ BSTNode *leftRotate(BSTNode *x)
     y->setLeft(x);
     x->setRight(T2);
  
-    x->setHeight(std::max(x->getLeft()->getHeight(),   
-                    x->getRight()->getHeight()) + 1);
+    x->setHeight(std::max(height(x->getLeft()),   
+                    height(x->getRight())) + 1);
 
-    y->setHeight(std::max(y->getLeft()->getHeight(),
-                    y->getRight()->getHeight()) + 1);
+    y->setHeight(std::max(height(y->getLeft()),
+                    height(y->getRight())) + 1);
  
     return y;
 }
@@ -25,11 +25,11 @@ BSTNode *rightRotate(BSTNode *y)
     x->setRight(y);
     y->setLeft(T2);
  
-    y->setHeight(std::max(y->getLeft()->getHeight(),   
-                    y->getRight()->getHeight()) + 1);
+    y->setHeight(std::max(height(y->getLeft()),   
+                    height(y->getRight())) + 1);
 
-    x->setHeight(std::max(x->getLeft()->getHeight(),
-                    x->getRight()->getHeight()) + 1);
+    x->setHeight(std::max(height(x->getLeft()),
+                    height(x->getRight())) + 1);
  
     return x;
 }
@@ -67,21 +67,28 @@ BSTNode* insertToSubtree(BSTNode* node, Person p)
                                 height(node->right)));
  
     int balance = getBalanceFactor(node);
- 
-    if (balance > 1 && node->left->getData() > p)
+    std::cout << node->getData() << p << balance << std::endl;
+
+    if (balance > 1 && node->left->getData() > p) {
+        std::cout << "HERE 1" << std::endl;
         return rightRotate(node);
+    }
  
-    if (balance < -1 && node->right->getData() > p)
+    if (balance < -1 && p > node->right->getData()) {
+        std::cout << "HERE: 2" << std::endl;
         return leftRotate(node);
+    }
  
-    if (balance > 1 && node->left->getData() > p)
+    if (balance > 1 && p > node->left->getData())
     {
+        std::cout << "HERE: 3" << std::endl;
         node->left = leftRotate(node->left);
         return rightRotate(node);
     }
  
     if (balance < -1 && node->right->getData() > p)
     {
+        std::cout << "HERE: 4" << std::endl;
         node->right = rightRotate(node->right);
         return leftRotate(node);
     }
