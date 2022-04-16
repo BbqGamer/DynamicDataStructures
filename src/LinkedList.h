@@ -2,6 +2,7 @@
 #define LINKEDLIST_H
 
 #include "Person.h"
+#include "TestSubject.h"
 
 class LinkedListNode {
 
@@ -18,7 +19,7 @@ public:
 };
 
 
-class LinkedList {
+class LinkedList: public TestSubject {
     LinkedListNode* head;
     
     public:

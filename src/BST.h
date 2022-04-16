@@ -1,4 +1,5 @@
 #include "Person.h"
+#include "TestSubject.h"
 
 class BSTNode {
 public:
@@ -27,7 +28,7 @@ public:
     
 };
 
-class BST {
+class BST: public TestSubject {
     BSTNode* root;
 
     public:

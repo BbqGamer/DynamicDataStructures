@@ -67,28 +67,23 @@ BSTNode* insertToSubtree(BSTNode* node, Person p)
                                 height(node->right)));
  
     int balance = getBalanceFactor(node);
-    std::cout << node->getData() << p << balance << std::endl;
 
     if (balance > 1 && node->left->getData() > p) {
-        std::cout << "HERE 1" << std::endl;
         return rightRotate(node);
     }
  
     if (balance < -1 && p > node->right->getData()) {
-        std::cout << "HERE: 2" << std::endl;
         return leftRotate(node);
     }
  
     if (balance > 1 && p > node->left->getData())
     {
-        std::cout << "HERE: 3" << std::endl;
         node->left = leftRotate(node->left);
         return rightRotate(node);
     }
  
     if (balance < -1 && node->right->getData() > p)
     {
-        std::cout << "HERE: 4" << std::endl;
         node->right = rightRotate(node->right);
         return leftRotate(node);
     }
