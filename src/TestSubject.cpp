@@ -20,3 +20,19 @@ void TestSubject::readNpeople(int n) {
 void TestSubject::setInputFile(std::string file) {
     inputFile = file;
 }
+
+void TestSubject::setOutputFile(std::string file) {
+    outputFile = file;
+}
+
+void TestSubject::test(int n) {
+    //TESTS THE INSERT, SEARCH AND REMOVE FUNCTIONS
+    readNpeople(n);
+    std::ofstream f;
+    f.open(outputFile, std::ios_base::app);
+    if(f.is_open()) {
+        f << "structure,n,insert,search,remove" << std::endl;
+        f << this->getStructureName() << n << "," << getAverageInsertTime() << "," << getAverageSearchTime() << "," << getAverageRemoveTime() << std::endl;
+    }
+    f.close();
+}

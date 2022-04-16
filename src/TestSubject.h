@@ -13,6 +13,7 @@ public:
     virtual void insert(Person p) = 0;
     virtual Person search(int index) = 0;
     virtual void remove(int index) = 0;
+    virtual std::string getStructureName() = 0;
 
     void readNpeople(int n);
     double getAverageInsertTime();
@@ -21,6 +22,7 @@ public:
     void test(int n);
 
     void setInputFile(std::string file);
+    void setOutputFile(std::string file);
 };
 
 #endif
