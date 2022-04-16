@@ -32,6 +32,8 @@ class LinkedList: public TestSubject {
     void insert(Person p);
     Person search(int index);
     void remove(int index);
+
+    std::string getStructureName() {return "LinkedList";};
 };
 
 #endif

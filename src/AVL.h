@@ -10,6 +10,8 @@ class AVL: public BST {
         void insert(Person p);
 
         void setRoot(BSTNode* node);
+
+        std::string getStructureName() {return "AVL";};
 };
 
 BSTNode* leftRotate(BSTNode* node);

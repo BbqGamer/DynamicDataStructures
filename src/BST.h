@@ -42,6 +42,8 @@ class BST: public TestSubject {
     Person search(int index);
     void remove(int index);
 
+    std::string getStructureName() {return "BST";};
+
 };
 
 void deleteSubtree(BSTNode* node);
