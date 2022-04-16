@@ -6,8 +6,8 @@
 
 class TestSubject {
     std::vector<Person> people;
-    std::string inputFile = "./data/people.txt";
-    std::string outputFile = "./output/output.csv";
+    std::string inputFile = "../data/people.txt";
+    std::string outputFile = "../output/output.csv";
 
 public:
     virtual void insert(Person p) = 0;

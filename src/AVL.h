@@ -5,7 +5,7 @@
 
 class AVL: public BST {
     public:
-        AVL() {};
+        AVL(): BST() {};
         ~AVL() {};
         void insert(Person p);
         void remove(int index);
