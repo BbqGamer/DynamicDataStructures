@@ -11,16 +11,16 @@
 
 int main() {
 
-    std::vector<TestSubject*> subjects = {new LinkedList(), new BST()};
+    std::vector<TestSubject*> subjects = {new AVL()};
     std::ofstream f;
-    f.open("../output/output.csv");
+    f.open("../output/output2.csv");
     f << "structure,n,insert,search,remove" << std::endl;
     f.close();
 
     for(int n = STARTING; n <= ENDING; n += STEP) {
         for(auto subject: subjects) {
             subject->setInputFile("../data/people.txt");
-            subject->setOutputFile("../output/output.csv");
+            subject->setOutputFile("../output/output2.csv");
             subject->test(n);
         }
     }

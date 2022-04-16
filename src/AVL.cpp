@@ -1,4 +1,5 @@
 #include "AVL.h"
+#include "BST.h"
 
 BSTNode *leftRotate(BSTNode *x)
 {
@@ -90,6 +91,81 @@ BSTNode* insertToSubtree(BSTNode* node, Person p)
  
     return node;
 }
+
+void AVL::remove(int index) {
+    BSTNode* ptr = removeFromSubtree(this->getRoot(), index);
+    setRoot(ptr);
+}
+
+BSTNode* deleteFromSubtree(BSTNode* root, int index) {
+     
+    if (root == nullptr)
+        return root;
+ 
+    if ( index < root->getData().getIndex() )
+        root->left = deleteFromSubtree(root->left, index);
+
+    else if( index > root->getData().getIndex() )
+        root->right = deleteFromSubtree(root->right, index);
+ 
+    else
+    {
+        if( (root->left == NULL) ||
+            (root->right == NULL) )
+        {
+            BSTNode* temp = root->left ?
+                         root->left :
+                         root->right;
+ 
+            if (temp == nullptr)
+            {
+                temp = root;
+                root = nullptr;
+            }
+            else 
+            *root = *temp; 
+            free(temp);
+        }
+        else
+        {
+            BSTNode* temp = root->right->findMin();
+ 
+            root->setData(temp->getData());
+ 
+            root->right = deleteFromSubtree(root->right,
+                                            temp->getData().getIndex());
+        }
+    }
+ 
+    if (root == nullptr)
+    return root;
+ 
+    root->height = 1 + std::max(height(root->left),
+                                height(root->right));
+ 
+    int balance = getBalanceFactor(root);
+ 
+    if (balance > 1 && getBalanceFactor(root->left) >= 0)
+        return rightRotate(root);
+ 
+    if (balance > 1 && getBalanceFactor(root->left) < 0) {
+        root->left = leftRotate(root->left);
+        return rightRotate(root);
+    }
+ 
+    if (balance < -1 && getBalanceFactor(root->right) <= 0)
+        return leftRotate(root);
+ 
+    if (balance < -1 && getBalanceFactor(root->right) > 0)
+    {
+        root->right = rightRotate(root->right);
+        return leftRotate(root);
+    }
+ 
+    return root;
+}
+
+
 int height(BSTNode* node) {
     if (node == nullptr) {
         return 0;
