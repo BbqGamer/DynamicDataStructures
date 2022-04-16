@@ -9,19 +9,32 @@
 #define ENDING 100000
 #define STEP 10000
 
-int main() {
+void experiment(std::vector<TestSubject*> subjects, std::string inputFile="../data/people.txt", std::string outputFile="../output/output.csv", 
+                int start=STARTING, int end=ENDING, int step=STEP) {
 
-    std::vector<TestSubject*> subjects = {new LinkedList(), new BST(), new AVL()};
     std::ofstream f;
-    f.open("./output/output.csv");
-    f << "structure,n,insert,search,remove" << std::endl;
+    f.open(outputFile);
+    f << "structure,operation,n,time" << std::endl;
     f.close();
 
-    for(int n = STARTING; n <= ENDING; n += STEP) {
+    for(int n = start; n <= end; n += step) {
         for(auto subject: subjects) {
+            subject->setInputFile(inputFile);
+            subject->setOutputFile(outputFile);
             subject->test(n);
         }
     }
+}
+
+int main() {
+
+    std::vector<TestSubject*> subjects1 = {new LinkedList(), new BST(), new AVL()};
+    experiment(subjects1);
+
+    std::vector<TestSubject*> subjects2 = {new LinkedList(), new BST(), new AVL()};
+    experiment(subjects2, "../data/people.txt", "../output/output2.csv", 10000, 1000000, 20000);
+
+
 
     return 0;
 }

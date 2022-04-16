@@ -31,7 +31,9 @@ void TestSubject::test(int n) {
     std::ofstream f;
     f.open(outputFile, std::ios_base::app);
     if(f.is_open()) {
-        f << this->getStructureName() << "," << n << "," << getAverageInsertTime() << "," << getAverageSearchTime() << "," << getAverageRemoveTime() << std::endl;
+        f << this->getStructureName() << ",insert," << n << "," << getAverageInsertTime() << std::endl;
+        f << this->getStructureName() << ",search," << n << "," << getAverageSearchTime() << std::endl;
+        f << this->getStructureName() << ",remove," << n << "," << getAverageRemoveTime() << std::endl;
     } else {
         std::cout << "ERROR OPENING FILE" << std::endl;
     }
