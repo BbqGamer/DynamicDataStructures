@@ -31,8 +31,63 @@ void TestSubject::test(int n) {
     std::ofstream f;
     f.open(outputFile, std::ios_base::app);
     if(f.is_open()) {
-        f << "structure,n,insert,search,remove" << std::endl;
-        f << this->getStructureName() << n << "," << getAverageInsertTime() << "," << getAverageSearchTime() << "," << getAverageRemoveTime() << std::endl;
+        f << this->getStructureName() << "," << n << "," << getAverageInsertTime() << "," << getAverageSearchTime() << "," << getAverageRemoveTime() << std::endl;
+    } else {
+        std::cout << "ERROR OPENING FILE" << std::endl;
     }
     f.close();
+}
+
+double TestSubject::getAverageInsertTime() {
+    double insertTime = 0;
+    clock_t start, end;
+    double cpu_time_used;
+    for(auto person : people) {
+        start = clock();
+
+        this->insert(person);
+
+        end = clock();
+        cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        insertTime += cpu_time_used;
+    }
+    std::random_shuffle(people.begin(), people.end());
+
+    return insertTime / people.size();
+}
+
+double TestSubject::getAverageSearchTime() {
+    double searchTime = 0;
+    clock_t start, end;
+    double cpu_time_used;
+    for(auto person : people) {
+        start = clock();
+
+        this->search(person.getIndex());
+
+        end = clock();
+        cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        searchTime += cpu_time_used;
+    }
+    std::random_shuffle(people.begin(), people.end());
+
+    return searchTime / people.size();
+}
+
+double TestSubject::getAverageRemoveTime() {
+    double removeTime = 0;
+    clock_t start, end;
+    double cpu_time_used;
+    for(auto person : people) {
+        start = clock();
+
+        this->remove(person.getIndex());
+
+        end = clock();
+        cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        removeTime += cpu_time_used;
+    }
+    removeTime = removeTime / people.size();
+    people = std::vector<Person>();
+    return removeTime;
 }

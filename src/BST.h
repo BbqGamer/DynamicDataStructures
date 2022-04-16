@@ -1,3 +1,6 @@
+#ifndef BST_H
+#define BST_H
+
 #include "Person.h"
 #include "TestSubject.h"
 
@@ -52,3 +55,5 @@ BSTNode* removeFromSubtree(BSTNode* root, int index);
 void printINORDER(BSTNode* root);
 void printPREORDER(BSTNode* root);
 void printPOSTORDER(BSTNode* root);
+
+#endif
