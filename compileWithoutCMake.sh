@@ -1,0 +1,1 @@
+g++ -std=c++11 -static-libstdc++ -shared-libgcc -xc++ src/*.cpp -o build/bin/noCmake
