@@ -5,9 +5,9 @@
 #include "Person.h"
 #include "includes.h"
 
-#define STARTING 1000
-#define ENDING 100000
-#define STEP 10000
+#define STARTING 2000
+#define ENDING 60000
+#define STEP 2000
 
 void experiment(std::vector<TestSubject*> subjects, std::string inputFile="../data/people.txt", std::string outputFile="../output/output.csv", 
                 int start=STARTING, int end=ENDING, int step=STEP) {
@@ -31,10 +31,8 @@ int main() {
     std::vector<TestSubject*> subjects1 = {new LinkedList(), new BST(), new AVL()};
     experiment(subjects1);
 
-    std::vector<TestSubject*> subjects2 = {new LinkedList(), new BST(), new AVL()};
-    experiment(subjects2, "../data/people.txt", "../output/output2.csv", 10000, 1000000, 20000);
-
-
+    std::vector<TestSubject*> subjects2 = {new BST(), new AVL()};
+    experiment(subjects2, "../data/people.txt", "../output/output2.csv", 20000, 1000000, 20000);
 
     return 0;
 }
