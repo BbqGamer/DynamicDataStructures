@@ -1,24 +1,13 @@
 #include "LinkedList.h"
 
 void LinkedList::insert(Person p) {
-    LinkedListNode *node = new LinkedListNode(p);
-    if (head == nullptr) {
-        head = node;
-    } else if (head->getData() > p) {
-        node->setNext(head);
-        head = node;
-    } else {
-        LinkedListNode *current = head;
-        while (current->getNext() != nullptr) {
-            if(current->getNext()->getData() > p) {
-                node->setNext(current->getNext());
-                current->setNext(node);
-                return;
-            }
-            current = current->getNext();
-        }
-        current->setNext(node);
+    LinkedListNode** tracer = &head;
+    while(*tracer != nullptr && (*tracer)->data.getIndex() < p.getIndex()) { 
+        tracer = &((*tracer)->next);
     }
+    LinkedListNode* newNode = new LinkedListNode(p);
+    newNode->next = *tracer;
+    *tracer = newNode;
 }
 
 Person LinkedList::search(int index) {

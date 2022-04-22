@@ -5,11 +5,10 @@
 #include "TestSubject.h"
 
 class LinkedListNode {
-
+public:
     LinkedListNode *next;
     Person data;
 
-public:
     LinkedListNode(): next(nullptr), data(Person()) {};
     LinkedListNode(Person p): next(nullptr), data(p) {};
 
