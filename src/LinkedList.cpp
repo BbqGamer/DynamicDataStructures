@@ -2,7 +2,7 @@
 
 void LinkedList::insert(Person p) {
     LinkedListNode** tracer = &head;
-    while(*tracer != nullptr && (*tracer)->data.getIndex() < p.getIndex()) { 
+    while(*tracer && (*tracer)->data.getIndex() < p.getIndex()) { 
         tracer = &((*tracer)->next);
     }
     LinkedListNode* newNode = new LinkedListNode(p);
@@ -12,32 +12,31 @@ void LinkedList::insert(Person p) {
 
 Person LinkedList::search(int index) {
     LinkedListNode *current = head;
-    while (current != nullptr) {
-        if (current->getData().getIndex() == index) {
-            return current->getData();
+    while (current) {
+        if (current->data.getIndex() == index) {
+            return current->data;
         }
-        current = current->getNext();
+        current = current->next;
     }
     throw std::out_of_range("Index not found in Linked List");
 }
 
 void LinkedList::remove(int index) {
-    LinkedListNode *current = head;
-    LinkedListNode *previous = nullptr;
-    while (current != nullptr) {
-        if (current->getData().getIndex() == index) {
-            if (previous == nullptr) {
-                head = current->getNext();
-            } else {
-                previous->setNext(current->getNext());
-            }
-            delete current;
-            return;
-        }
-        previous = current;
-        current = current->getNext();
+    LinkedListNode** tracer = &head;
+    LinkedListNode* old;
+    bool present = false;
+
+    while(*tracer && !(present=((*tracer)->data.getIndex() == index))) { 
+        tracer = &((*tracer)->next);
     }
-    throw std::out_of_range("Index not found in Linked List");
+
+    if(present) {
+        old = *tracer;
+        *tracer = (*tracer)->next;
+        delete old;
+    } else {
+        throw std::out_of_range("Index not found in Linked List");
+    }
 }
 
 LinkedListNode* LinkedList::getHead() {
